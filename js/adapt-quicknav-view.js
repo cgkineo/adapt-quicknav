@@ -26,16 +26,16 @@ define(function(require) {
 
             if (this.model.state._locked == true) this.$('#next').attr("disabled", "disabled");
 
-				if (this.model.state.currentPage.model.get("_isComplete")) this.onPageCompleted();
-				else {
-					for(button in this.model.config._buttons) {
-						if(this.model.config._buttons[button]._unlockOnCompletion){
-							var buttonName = "#" + String(button).slice(1);
-							this.$(buttonName).attr("disabled", "disabled");
-							this.listenTo( this.model.state.currentPage.model,"change:_isComplete", this.onPageCompleted );
-						}
-					}	
-				}
+			if (this.model.state.currentPage.model.get("_isComplete")) this.onPageCompleted();
+			else {
+				for(button in this.model.config._buttons) {
+					if(this.model.config._buttons[button]._unlockOnCompletion){
+						var buttonName = "#" + String(button).slice(1);
+						this.$(buttonName).attr("disabled", "disabled");
+						this.listenTo( this.model.state.currentPage.model,"change:_isComplete", this.onPageCompleted );
+					}
+				}	
+			}
 
 			
 		},
@@ -94,4 +94,3 @@ define(function(require) {
 
 	return QuickNavView;
 })
-	
