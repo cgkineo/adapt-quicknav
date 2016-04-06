@@ -26,14 +26,16 @@ define(function(require) {
 
             if (this.model.state._locked == true) this.$('#next').attr("disabled", "disabled");
 
-			if (this.model.config._isEnableNextOnCompletion) {
 				if (this.model.state.currentPage.model.get("_isComplete")) this.onPageCompleted();
 				else {
-					this.$('#next').attr("disabled", "disabled");
-					this.listenTo( this.model.state.currentPage.model,"change:_isComplete", this.onPageCompleted );
+					for(button in this.model.config._buttons) {
+						if(this.model.config._buttons[button]._unlockOnCompletion){
+							var buttonName = "#" + String(button).slice(1);
+							this.$(buttonName).attr("disabled", "disabled");
+							this.listenTo( this.model.state.currentPage.model,"change:_isComplete", this.onPageCompleted );
+						}
+					}	
 				}
-			}
-
 
 			
 		},
@@ -78,6 +80,14 @@ define(function(require) {
 
             if (this.model.state._locked == true) this.$('#next').attr("disabled", "disabled");
 			else this.$('#next').removeAttr("disabled");
+
+			for(button in this.model.config._buttons) {
+				if(this.model.config._buttons[button]._unlockOnCompletion){
+					var buttonName = "#" + String(button).slice(1);
+					this.$(buttonName).removeAttr("disabled", "disabled");
+					this.listenTo( this.model.state.currentPage.model,"change:_isComplete", this.onPageCompleted );
+				}
+			}
 		}
 
 	});
