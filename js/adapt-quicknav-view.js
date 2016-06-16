@@ -82,6 +82,8 @@ define(function(require) {
                     this.model.state._locked = true;
                 }
             }
+            console.log("pageComplete");
+            $(".quicknav-instructions").addClass("display-none");
 			this.buttonLock(false);
 		}
 
