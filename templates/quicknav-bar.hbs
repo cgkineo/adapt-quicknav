@@ -1,9 +1,5 @@
 <div class="block-inner quicknav-inner">
 
-	{{#if config._pageIncompleteInstructions}}	
-		<div class="quicknav-instructions">{{config._pageIncompleteInstructions}}</div>
-	{{/if}}
-
 	{{#if config._buttons._hasIcons}}	
 
 	<button id="previous" class="button icon {{config._buttons._previous._icon}}{{#if config._buttons._previous._isHidden}} display-none{{/if}}{{#if state.isFirstPage}} disabled{{/if}}" {{#if state.isFirstPage}}disabled="disabled"{{/if}} role="button" aria-label="{{config._buttons._previous.text}}"></button>
