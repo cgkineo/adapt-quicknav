@@ -11,25 +11,22 @@
     "_buttons": {
         "_root": {
             "_isHidden": false,
-            "text": "Go to main menu",
-            "_unlockOnCompletion": false
+            "text": "Go to main menu"
         },
         "_up": {
             "_isHidden": false,
-            "text": "Back to menu",
-            "_unlockOnCompletion": false
+            "text": "Back to menu"
         },
         "_previous": {
             "_isHidden": false,
-            "text": "< Previous",
-            "_unlockOnCompletion": false
+            "text": "< Previous"
         },
         "_next": {
             "_isHidden": false,
-            "text": "Next >",
-            "_unlockOnCompletion": false
+            "text": "Next >"
         }
     },
+    "_isEnableNextOnCompletion": true,
     "_lock": [
         "co-05",
         "co-10",
@@ -76,11 +73,11 @@
 //if you want a component in which to place the quicknav, please add:
 //NOTE: please remove _injectIntoSelector from above
 {
-    "_id": "c-50",
-    "_parentId": "b-50",
+    "_id": "c-61",
+    "_parentId": "b-48",
     "_type": "component",
     "_component": "quicknav",
     "_classes": "",
     "_layout": "full",
-    "title": ""
+    "title": "c-48"
 },
