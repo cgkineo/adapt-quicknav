@@ -4,15 +4,16 @@
 * Maintainers - Oliver Foster <oliver.foster@kineo.com>
 */
 
-define(function(require) {
-
-	var Adapt = require('coreJS/adapt');
-	var Backbone = require('backbone');
-	var QuickNavView = require('extensions/adapt-quicknav/js/adapt-quicknav-view');
-	require('extensions/adapt-quicknav/js/quicknav-placeholder');
+define([
+	'core/js/adapt',
+	'extensions/adapt-quicknav/js/adapt-quicknav-view',
+	'extensions/adapt-quicknav/js/quicknav-placeholder'
+],
+function(Adapt, QuickNavView) {
 
 	var quicknav = Backbone.View.extend({
 		config: undefined,
+
 		state: {
 			lastBlock: undefined,
 			currentMenu: undefined,
@@ -20,30 +21,64 @@ define(function(require) {
 			isFirstPage: false,
 			isLastPage: false
 		},
+
 		menuStructure: {},
+		
 		onRootClicked: function() {
-			Backbone.history.navigate("#/",{trigger:true, "replace": true});
+			this.navigateTo("/");
 		},
+
+		onUpClicked: function() {
+			this.navigateTo(this.state.currentPage.model.get("_parentId"));
+		},
+
 		onPreviousClicked:function() {
-			var menus = undefined;
-			var indexOfMenu = undefined;
-			var pages = undefined;
+			var params = this.getParameters();
+
+			if (params.pages === undefined) return;
+
+			var indexOfCurrentPage = _.indexOf(params.pages, this.state.currentPage.model.get("_id"));
+			var indexOfPrevPage = this.getPrevPageIndex(params.menus, params.indexOfMenu, params.pages, indexOfCurrentPage);
+
+			this.navigateTo(params.pages[indexOfPrevPage]);
+		},
+
+		onNextClicked: function() {
+			var params = this.getParameters();
+
+			if (params.pages === undefined) return;
+
+			var indexOfCurrentPage = _.indexOf(params.pages, this.state.currentPage.model.get("_id"));
+			var indexOfNextPage = this.getNextPageIndex(params.menus, params.indexOfMenu, params.pages, indexOfCurrentPage);
+
+			this.navigateTo(params.pages[indexOfNextPage]);
+		},
+
+		navigateTo: function(id) {
+			var hash = "#" + (id === "/" ? id : "/id/" + id);
+			Backbone.history.navigate(hash, {trigger:true, "replace": true});
+		},
+
+		getParameters: function() {
+			var params = {};
 
 			if (_.keys(this.menuStructure).length === 0) {
-				pages = _.pluck(new Backbone.Collection(Adapt.contentObjects.where({_type: "page"})).toJSON(), [ "_id" ]);
+				params.pages = _.pluck(new Backbone.Collection(Adapt.contentObjects.where({_type: "page"})).toJSON(), [ "_id" ]);
 			} else {
-				menus = _.keys(this.menuStructure);
-				indexOfMenu = _.indexOf(menus, this.state.currentMenu.get("_id"));
-				pages = _.keys(this.menuStructure[this.state.currentMenu.get("_id")]);
+				params.menus = _.keys(this.menuStructure);
+				params.indexOfMenu = _.indexOf(menus, this.state.currentMenu.get("_id"));
+				params.pages = _.keys(this.menuStructure[this.state.currentMenu.get("_id")]);
 			}
 
-			if (pages === undefined) return;
+			return params;
+		},
 
-			var indexOfPage = _.indexOf(pages, this.state.currentPage.model.get("_id"));
+		getPrevPageIndex: function(menus, indexOfMenu, pages, indexOfPage) {
+			//console.log("quicknav::getPrevPageIndex", indexOfPage);
 			if (this.config._isContinuous == "global" && menus !== undefined) {
 				if (indexOfPage === 0) { //if page is at the beginning of the menu goto previous menu, last page
 					if (this.config._global !== undefined && this.config._global._pagePrevious !== undefined) {
-						Backbone.history.navigate("#/id/" + this.config._global._pagePrevious, {trigger: true, replace: true});
+						this.navigateTo(this.config._global._pagePrevious);
 						return;
 					} else if (indexOfMenu === 0 && indexOfMenu == menus.length - 1) {
 						//single menu, last page
@@ -70,32 +105,21 @@ define(function(require) {
 				if (indexOfPage === 0) return;
 				indexOfPage-=1; //previous page
 			}
-			Backbone.history.navigate("#/id/" + pages[indexOfPage], {trigger: true, replace: true});
-		},
-		onUpClicked: function() {
-			var parentId = this.state.currentPage.model.get("_parentId");
-			Backbone.history.navigate("#/id/" + parentId, {trigger: true, replace: true});
-		},
-		onNextClicked: function() {
-			var menus = undefined;
-			var indexOfMenu = undefined;
-			var pages = undefined;
 
-			if (_.keys(this.menuStructure).length === 0) {
-				pages = _.pluck(new Backbone.Collection(Adapt.contentObjects.where({_type: "page"})).toJSON(), [ "_id" ]);
+			if(this.isPageAvailable(pages, indexOfPage)) {
+				return indexOfPage;
 			} else {
-				menus = _.keys(this.menuStructure);
-				indexOfMenu = _.indexOf(menus, this.state.currentMenu.get("_id"));
-				pages = _.keys(this.menuStructure[this.state.currentMenu.get("_id")]);
+				//uh-oh, that page isn't available - try again
+				return this.getPrevPageIndex(menus, indexOfMenu, pages, indexOfPage);
 			}
+		},
 
-			if (pages === undefined) return;
-
-			var indexOfPage = _.indexOf(pages, this.state.currentPage.model.get("_id"));
+		getNextPageIndex: function(menus, indexOfMenu, pages, indexOfPage) {
+			//console.log("quicknav::getNextPageIndex", indexOfPage);
 			if (this.config._isContinuous == "global" && menus !== undefined) {
 				if (indexOfPage === pages.length - 1) { //if page is at the end of the menu goto next menu, first page
 					if (this.config._global !== undefined && this.config._global._pageNext !== undefined) {
-						Backbone.history.navigate("#/id/" + this.config._global._pageNext, {trigger: true, replace: true});
+						this.navigateTo(this.config._global._pageNext);
 						return;
 					} else if (indexOfMenu === 0 && indexOfMenu == menus.length - 1) {
 						//single menu, first page
@@ -122,13 +146,26 @@ define(function(require) {
 				if (indexOfPage == pages.length - 1) return;
 				indexOfPage+=1; //next page
 			}
-			Backbone.history.navigate("#/id/" + pages[indexOfPage], {trigger: true, replace: true});
+
+			if(this.isPageAvailable(pages, indexOfPage)) {
+				return indexOfPage;
+			} else {
+				//uh-oh, that page isn't available - try again
+				return this.getNextPageIndex(menus, indexOfMenu, pages, indexOfPage);
+			}
 		},
+
+		isPageAvailable: function(pages, indexOfPage) {
+			var contentObject = Adapt.findById(pages[indexOfPage]);
+			//console.log("quicknav::isPageAvailable ", indexOfPage, contentObject.get('_isAvailable'));
+			return contentObject.get('_isAvailable');
+		},
+
 		position: function() {
 			this.state.isFirstPage = false;
 			this.state.isLastPage = false;
 
-			var pages = undefined;
+			var pages;
 
 			if (_.keys(this.menuStructure).length === 0) {
 				pages = _.pluck(new Backbone.Collection(Adapt.contentObjects.where({_type: "page"})).toJSON(), [ "_id" ]);
@@ -152,7 +189,6 @@ define(function(require) {
 				if (indexOfPage === 0) this.state.isFirstPage = true;
 				if (indexOfPage == pages.length - 1) this.state.isLastPage = true;
 			}
-
 		}
 	});
 	quicknav = new quicknav();
@@ -196,15 +232,17 @@ define(function(require) {
 		quickNavView.parent = quicknav;
 		quickNavView.undelegateEvents();
 
+		var injectInto;
+
 		if (quicknav.config._injectIntoSelector) {
-			var injectInto = element.find(quicknav.config._injectIntoSelector);
+			injectInto = element.find(quicknav.config._injectIntoSelector);
 			if (injectInto.length > 0) {
 				injectInto.append(quickNavView.$el);
 			} else {
 				element.append(quickNavView.$el);
 			}
 		} else {
-			var injectInto = element.find(".quicknav-component");
+			injectInto = element.find(".quicknav-component");
 			if (injectInto.length > 0) {
 				injectInto.append(quickNavView.$el);
 			} else {
@@ -213,11 +251,7 @@ define(function(require) {
 		}
 		
 		quickNavView.delegateEvents();
-
-
-
 	});
 
 	return quicknav;
-
-})
+});
