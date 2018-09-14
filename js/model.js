@@ -42,7 +42,7 @@ define([
                 "_sibling": this.getSiblingPages(),
                 "_close": new Backbone.Model({
                     "_id": "",
-                    "_onClick": "window.close();"
+                    "_onClick": "window.top.close();"
                 })
             };
 
