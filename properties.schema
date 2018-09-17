@@ -204,7 +204,7 @@
               "translatable": true
             },
             "_customRouteId": {
-              "type": "boolean",
+              "type": "string",
               "required": true,
               "title": "Override the route id",
               "default": "",
@@ -294,7 +294,7 @@
               "translatable": true
             },
             "_customRouteId": {
-              "type": "boolean",
+              "type": "string",
               "required": true,
               "title": "Override the route id",
               "default": "",
@@ -384,7 +384,7 @@
               "translatable": true
             },
             "_customRouteId": {
-              "type": "boolean",
+              "type": "string",
               "required": true,
               "title": "Override the route id",
               "default": "",
@@ -474,7 +474,7 @@
               "translatable": true
             },
             "_customRouteId": {
-              "type": "boolean",
+              "type": "string",
               "required": true,
               "title": "Override the route id",
               "default": "",
@@ -564,7 +564,7 @@
               "translatable": true
             },
             "_customRouteId": {
-              "type": "boolean",
+              "type": "string",
               "required": true,
               "title": "Override the route id",
               "default": "",
@@ -654,7 +654,7 @@
               "translatable": true
             },
             "_customRouteId": {
-              "type": "boolean",
+              "type": "string",
               "required": true,
               "title": "Override the route id",
               "default": "",
