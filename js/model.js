@@ -113,7 +113,7 @@ define([
 
         getReturnToPreviousLocation: function() {
 
-            return Adapt.findById(Adapt.location._previousId);
+            return Adapt.location._previousId ? Adapt.findById(Adapt.location._previousId) : null;
 
         },
 
