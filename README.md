@@ -189,9 +189,9 @@ The quicknav buttons will respect any [locking](https://github.com/adaptlearning
 >>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
 
 ----------------------------
-**Version number:**  4.0.0
-**Framework versions:**  5+
-**Author / maintainer:**  Kineo
-**Accessibility support:**  WAI AA
-**RTL support:**  Yes
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 11+12 for macOS+iOS, Opera
+**Version number:**  4.0.0  
+**Framework versions:**  5+  
+**Author / maintainer:**  Kineo  
+**Accessibility support:**  WAI AA  
+**RTL support:**  Yes  
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 11+12 for macOS+iOS, Opera  
