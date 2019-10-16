@@ -145,6 +145,10 @@ define([
 
       var id = $target.attr('data-id') || this.model.getCurrentPage().get('_id');
 
+      if (!id) {
+        return;
+      }
+
       // If tooltip isn't defined allow the event to propogate down to the document
       if (!$target.attr('tooltip')) {
         return;
@@ -169,7 +173,7 @@ define([
 
       var tooltip = new Tooltip({
         $target: $target,
-        model: !id ? new Backbone.Model({}) : Adapt.findById(id)
+        model: Adapt.findById(id)
       });
 
       this.$('.quicknav__tooltip-container').append(tooltip.$el);
