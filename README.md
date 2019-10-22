@@ -194,4 +194,4 @@ The quicknav buttons will respect any [locking](https://github.com/adaptlearning
 **Author / maintainer:**  Kineo  
 **Accessibility support:**  WAI AA  
 **RTL support:**  Yes  
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 11+12 for macOS+iOS, Opera  
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera  
