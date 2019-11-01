@@ -6,7 +6,7 @@
 
 ## Settings Overview
 
-The attributes listed below are used in *components.json* to configure **Hotgrid**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-hotgrid/blob/master/example.json).
+The attributes listed below are used in *components.json* to configure **Quicknav**, and are properly formatted as JSON in [*example.json*](https://github.com/cgkineo/adapt-quicknav/blob/master/example.json).
 
 Navigation bar component which can contain some or all of the following buttons:
 
@@ -24,9 +24,9 @@ The quicknav buttons will respect any [locking](https://github.com/adaptlearning
 
 [**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
 
-**\_component** (string): This value must be: `hotgrid`. (One word.)
+**\_component** (string): This value must be: `quicknav`. (One word.)
 
-**\_classes** (string): CSS class name to be applied to **Hotgrid**’s containing `div`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+**\_classes** (string): CSS class name to be applied to **Quicknav**’s containing `div`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
 **\_layout** (string): This defines the horizontal position of the component in the block. Acceptable values are `full`, `left` or `right`.
 
@@ -34,159 +34,47 @@ The quicknav buttons will respect any [locking](https://github.com/adaptlearning
 
 **\_loopStyle** (string): Acceptable values are `allPages`, `siblings`, and `none`. `allPages` = loop sequentially through all pages in course. `siblings` = loop sequentially through all pages in current parent object. `none` = disable previous and next buttons at start and end of the pages in the current parent object.
 
+
+
+
+
+**\_vanilla** (object): The following attributes configure the defaults for **Vanilla**. These include **\_backgroundImage**, **\_backgroundStyles** and **\_minimumHeights**. Global attributes are available at page, article and block level.
+
+#### Global background image
+
+
+
+
 **\_buttons** (object): It contains values for **\_returnToPreviousLocation**, **\_previous**, **\_root**, **\_up**, **\_next**, **\_sibling**, and **\_close**.
 
->**\_returnToPreviousLocation** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, **tooltip**, and **\_customRouteId**.
 
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_returnToPreviousLocation** button on and off. Acceptable values are `true` and `false`.
+**\_buttons** (object): The following attributes configure the defaults for the **Quickanv** buttons. These attributes are available on all of the following buttons **\_returnToPreviousLocation**, **\_previous**, **\_root**, **\_up**, **\_next**, **\_sibling**, and **\_close**.
 
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
+#### Global button configurations
 
->>**\_classes** (string): CSS class name to be applied to **\_returnToPreviousLocation**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+>**\_isEnabled** (boolean): Turns the button on and off. Acceptable values are `true` and `false`.
 
->>**\_iconClass** (string): CSS class name to be applied to **\_returnToPreviousLocation**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
+>**\_lockUntilPageComplete** (boolean): For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu. Acceptable values are `true` and `false`.
 
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
+>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
 
->>**text** (string): Defines the text that renders in the `button`.
+>**\_classes** (string): CSS class name to be applied to the `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
 
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
+>**\_iconClass** (string): CSS class name to be applied to the `button` icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
 
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
+>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
 
->>**tooltip** (string): Defines the text that renders in the tooltip.
+>**text** (string): Defines the text that renders in the `button`.
 
->**\_previous** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, and **tooltip**.
+>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
 
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_previous** button on and off. Acceptable values are `true` and `false`.
+>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
 
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
+>**tooltip** (string): Defines the text that renders in the tooltip.
 
->>**\_classes** (string): CSS class name to be applied to **\_previous**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
+#### **\_previous**, **\_root**, **\_up**, **\_next**, **\_sibling** 
 
->>**\_iconClass** (string): CSS class name to be applied to **\_previous**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
-
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
-
->>**text** (string): Defines the text that renders in the `button`.
-
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
-
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
-
->>**tooltip** (string): Defines the text that renders in the tooltip.
-
->>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
-
->**\_root** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, **tooltip**, and **\_customRouteId**.
-
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_root** button on and off. Acceptable values are `true` and `false`.
-
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
-
->>**\_classes** (string): CSS class name to be applied to **\_root**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
-
->>**\_iconClass** (string): CSS class name to be applied to **\_root**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
-
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
-
->>**text** (string): Defines the text that renders in the `button`.
-
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
-
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
-
->>**tooltip** (string): Defines the text that renders in the tooltip.
-
->>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
-
->**\_up** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, **tooltip**, and **\_customRouteId**.
-
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_up** button on and off. Acceptable values are `true` and `false`.
-
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
-
->>**\_classes** (string): CSS class name to be applied to **\_up**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
-
->>**\_iconClass** (string): CSS class name to be applied to **\_up**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
-
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
-
->>**text** (string): Defines the text that renders in the `button`.
-
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
-
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
-
->>**tooltip** (string): Defines the text that renders in the tooltip.
-
->>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
-
->**\_next** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, **tooltip**, and **\_customRouteId**.
-
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_next** button on and off. Acceptable values are `true` and `false`.
-
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
-
->>**\_classes** (string): CSS class name to be applied to **\_next**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
-
->>**\_iconClass** (string): CSS class name to be applied to **\_next**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
-
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
-
->>**text** (string): Defines the text that renders in the `button`.
-
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
-
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
-
->>**tooltip** (string): Defines the text that renders in the tooltip.
-
->>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
-
->**\_sibling** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, **tooltip**, and **\_customRouteId**.
-
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_sibling** button on and off. Acceptable values are `true` and `false`.
-
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
-
->>**\_classes** (string): CSS class name to be applied to **\_sibling**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
-
->>**\_iconClass** (string): CSS class name to be applied to **\_sibling**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
-
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
-
->>**text** (string): Defines the text that renders in the `button`.
-
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
-
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
-
->>**tooltip** (string): Defines the text that renders in the tooltip.
-
->>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
-
->**\_close** (object): It contains values for **\_isEnabled**, **\_order**, **\_classes**, **\_iconClass**, **\_alignIconRight**, **text**, **ariaLabel**, **\_showTooltip**, **tooltip**, and **\_customRouteId**.
-
->>**\_isEnabled** (boolean): Turns the **Quicknav** **\_close** button on and off. Acceptable values are `true` and `false`.
-
->>**\_order** (number): Defines the display order of the button. Numerical order with 0 rendering first.
-
->>**\_classes** (string): CSS class name to be applied to **\_close**’s `button`. The class must be predefined in one of the Less files. Separate multiple classes with a space.
-
->>**\_iconClass** (string): CSS class name to be applied to **\_close**'s icon. The class must be predefined in one of the Less files with the corresponding icon be added as part of a font.
-
->>**\_alignIconright** (boolean): Defines whether the icon is aligned to the left or right of the text. Default is `false` which aligns the icon to the left of the text.
-
->>**text** (string): Defines the text that renders in the `button`.
-
->>**ariaLabel** (string): This text is associated with the button. It renders as part of the aria label to give screen readers more information.
-
->>**\_showTooltip** (boolean): Defines whether the tooltip renders on hover. Default is `false`.
-
->>**tooltip** (string): Defines the text that renders in the tooltip.
-
->>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
+>**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
 
 ----------------------------
 **Version number:**  4.0.0  
