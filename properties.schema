@@ -58,7 +58,7 @@
               "type": "boolean",
               "required": true,
               "title": "Show",
-              "default": true,
+              "default": false,
               "inputType": "Checkbox",
               "validators": [],
               "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
@@ -144,6 +144,15 @@
               "default": false,
               "inputType": "Checkbox",
               "validators": []
+            },
+            "_lockUntilPageComplete": {
+              "type": "boolean",
+              "required": true,
+              "title": "Show",
+              "default": false,
+              "inputType": "Checkbox",
+              "validators": [],
+              "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
             },
             "_order": {
               "type": "number",
@@ -239,7 +248,7 @@
               "type": "boolean",
               "required": true,
               "title": "Show",
-              "default": true,
+              "default": false,
               "inputType": "Checkbox",
               "validators": [],
               "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
@@ -338,7 +347,7 @@
               "type": "boolean",
               "required": true,
               "title": "Show",
-              "default": true,
+              "default": false,
               "inputType": "Checkbox",
               "validators": [],
               "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
@@ -433,6 +442,15 @@
               "inputType": "Checkbox",
               "validators": []
             },
+            "_lockUntilPageComplete": {
+              "type": "boolean",
+              "required": true,
+              "title": "Show",
+              "default": false,
+              "inputType": "Checkbox",
+              "validators": [],
+              "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
+            },
             "_order": {
               "type": "number",
               "required": true,
@@ -462,7 +480,7 @@
               "type": "boolean",
               "required": true,
               "title": "Align icon right",
-              "default": false,
+              "default": true,
               "inputType": "Checkbox",
               "validators": []
             },
@@ -522,6 +540,15 @@
               "default": false,
               "inputType": "Checkbox",
               "validators": []
+            },
+            "_lockUntilPageComplete": {
+              "type": "boolean",
+              "required": true,
+              "title": "Show",
+              "default": false,
+              "inputType": "Checkbox",
+              "validators": [],
+              "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
             },
             "_order": {
               "type": "number",
@@ -617,7 +644,7 @@
               "type": "boolean",
               "required": true,
               "title": "Show",
-              "default": true,
+              "default": false,
               "inputType": "Checkbox",
               "validators": [],
               "help": "For use when the standard Adapt locking system doesn't apply, such as in a start page before the main menu"
