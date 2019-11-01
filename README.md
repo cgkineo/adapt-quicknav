@@ -34,20 +34,6 @@ The quicknav buttons will respect any [locking](https://github.com/adaptlearning
 
 **\_loopStyle** (string): Acceptable values are `allPages`, `siblings`, and `none`. `allPages` = loop sequentially through all pages in course. `siblings` = loop sequentially through all pages in current parent object. `none` = disable previous and next buttons at start and end of the pages in the current parent object.
 
-
-
-
-
-**\_vanilla** (object): The following attributes configure the defaults for **Vanilla**. These include **\_backgroundImage**, **\_backgroundStyles** and **\_minimumHeights**. Global attributes are available at page, article and block level.
-
-#### Global background image
-
-
-
-
-**\_buttons** (object): It contains values for **\_returnToPreviousLocation**, **\_previous**, **\_root**, **\_up**, **\_next**, **\_sibling**, and **\_close**.
-
-
 **\_buttons** (object): The following attributes configure the defaults for the **Quickanv** buttons. These attributes are available on all of the following buttons **\_returnToPreviousLocation**, **\_previous**, **\_root**, **\_up**, **\_next**, **\_sibling**, and **\_close**.
 
 #### Global button configurations
@@ -72,7 +58,7 @@ The quicknav buttons will respect any [locking](https://github.com/adaptlearning
 
 >**tooltip** (string): Defines the text that renders in the tooltip.
 
-#### **\_previous**, **\_root**, **\_up**, **\_next**, **\_sibling** 
+#### **\_previous** / **\_root** / **\_up** / **\_next** / **\_sibling** 
 
 >**\_customRouteId** (string): Overrides the route ID. For use when non standard route navigation is required.
 
