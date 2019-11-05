@@ -44,7 +44,7 @@
         "_returnToPreviousLocation": {
           "type": "object",
           "required": true,
-          "title": "Return to previous location button",
+          "legend": "Return to previous location button",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
@@ -135,7 +135,7 @@
         "_previous": {
           "type": "object",
           "required": true,
-          "title": "Previous button",
+          "legend": "Previous button",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
@@ -234,7 +234,7 @@
         "_root": {
           "type": "object",
           "required": true,
-          "title": "Root button",
+          "legend": "Root button",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
@@ -333,7 +333,7 @@
         "_up": {
           "type": "object",
           "required": true,
-          "title": "Up button",
+          "legend": "Up button",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
@@ -432,7 +432,7 @@
         "_next": {
           "type": "object",
           "required": true,
-          "title": "Next button",
+          "legend": "Next button",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
@@ -531,7 +531,7 @@
         "_sibling": {
           "type": "object",
           "required": true,
-          "title": "Sibling buttons",
+          "legend": "Sibling buttons",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
@@ -630,7 +630,7 @@
         "_close": {
           "type": "object",
           "required": true,
-          "title": "Close button",
+          "legend": "Close button",
           "properties": {
             "_isEnabled": {
               "type": "boolean",
