@@ -57,7 +57,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
@@ -148,7 +148,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
@@ -247,7 +247,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
@@ -346,7 +346,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
@@ -445,7 +445,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
@@ -544,7 +544,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
@@ -643,7 +643,7 @@
             "_lockUntilPageComplete": {
               "type": "boolean",
               "required": true,
-              "title": "Show",
+              "title": "Lock until page complete",
               "default": false,
               "inputType": "Checkbox",
               "validators": [],
