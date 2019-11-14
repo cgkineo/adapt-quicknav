@@ -1,8 +1,17 @@
-<div class="quicknav-inner component-inner">
-{{> component}}
-<div class="quicknav-widget">
-{{#each _items}}
-{{> quicknav-item this}}
-{{/each}}
-</div>
+<div class="component__inner quicknav__inner">
+
+  {{> component}}
+
+  <div class="component__widget quicknav__widget">
+
+    <div class="quicknav__tooltip-container"></div>
+
+    <div class="quicknav__btn-container">
+      {{#each _items}}
+      {{> quicknav-item this}}
+      {{/each}}
+    </div>
+
+  </div>
+
 </div>
